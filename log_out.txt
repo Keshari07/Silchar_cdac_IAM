@@ -1,0 +1,46 @@
+Create logout Page using python and HTML, CSS,  JavaScript with database PGSQL code
+
+To create a logout page in a web application using Python, HTML, CSS, JavaScript, and PostgreSQL, you can extend the previous example. Here's how you can create a simple logout page:
+
+Update your app.py to include the logout functionality:
+python
+Copy code
+# ... (previous code)
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('index'))
+
+# ... (rest of the code)
+Create an HTML template for the logout page (logout.html):
+html
+Copy code
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Logout</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="logout-container">
+        <h1>Logout</h1>
+        <p>You have been successfully logged out.</p>
+        <a href="/">Back to Login</a>
+    </div>
+</body>
+</html>
+Create a CSS file (style.css) to style your logout page:
+css
+Copy code
+/* Add your CSS styling here */
+Update the logout() function in app.py to render the logout.html template:
+python
+Copy code
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return render_template('logout.html')
+Now, when a user clicks the "Logout" link, they will be redirected to the logout page (/logout), and their session will be cleared. You can customize the logout page and style it as per your requirements.
+
+Remember to run your Flask application using python app.py after making these changes, and ensure you have the necessary PostgreSQL database and tables set up as described in the previous answer.
